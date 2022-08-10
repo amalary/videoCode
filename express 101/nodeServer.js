@@ -1,6 +1,11 @@
 // http is native to NodeJs . We just have to ask for it 
 
-const http = require('http');
+const http = require('http')
+
+// fs = file system module! File system is built into Node see above 
+// fs gives Node access to this computers file system
+
+const fs =  require('fs')
 
 
 // The http module has a createServer method that comes with it 
@@ -8,6 +13,7 @@ const http = require('http');
 //1 argument callback, callback, has 2 args: req, res
 
 const server = http.createServer((req, res) => {
+    console.log(`A request was made to: ${req.url}`)
     if(req.url === "/"){
         // The user wants the homepage  We know, because the req object has / in the url property 
         // console.log(req)
@@ -20,8 +26,16 @@ const server = http.createServer((req, res) => {
         // 1. status code 
         // 2. object for the mime-type 
         res.writeHead(200,{'content-type': 'text/html'})
-        res.write('<h1>This is the home page </h1>')
+        const homePageHTML = fs.readFileSync('node.html')
+        res.write(homePageHTML);
+        // console.log(homePageHTML)
         res.end()
+    }else if(req.url == '/Node.js_logo.svg.png'){
+
+        res.writeHead(200,{'content-type': 'image/png'})
+        const image = fs.readFileSync('Node.js_logo.svg.png')
+        res.write(image);
+
 
     }else{
         res.writeHead(404,{'content-type': 'text/html'})
@@ -29,7 +43,6 @@ const server = http.createServer((req, res) => {
         res.end()
 
     }
-   
 })
 
 // createServer returns an object with a listen method 
