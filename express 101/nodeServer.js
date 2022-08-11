@@ -27,15 +27,25 @@ const server = http.createServer((req, res) => {
         // 2. object for the mime-type 
         res.writeHead(200,{'content-type': 'text/html'})
         const homePageHTML = fs.readFileSync('node.html')
-        res.write(homePageHTML);
+        res.write(homePageHTML)
         // console.log(homePageHTML)
         res.end()
-    }else if(req.url == '/Node.js_logo.svg.png'){
+    }else if(req.url === '/Node.js_logo.svg.png'){
 
         res.writeHead(200,{'content-type': 'image/png'})
         const image = fs.readFileSync('Node.js_logo.svg.png')
-        res.write(image);
+        res.write(image)
+        res.end();
 
+
+    }else if(req.url == '/styles.css'){
+        
+        res.writeHead(200,{'content-type': 'text/css'})
+        const css = fs.readFileSync('styles.css')
+        res.write(css)
+        res.end();
+
+        
 
     }else{
         res.writeHead(404,{'content-type': 'text/html'})
