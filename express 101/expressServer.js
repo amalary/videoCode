@@ -1,6 +1,8 @@
 // Node js is the language 
 // Express is Node, a node module more specifically 
 
+const path = require('path')
+
 // http is a native module 
 const http = require('http')
 
@@ -16,11 +18,24 @@ const express = require('express')
 // 2.callback to run if the route is requested 
 const app = express()
 
-app.all('*', (req,res) =>{
-    // Express handles the basic headers (status code, mime-type) ! 
-    res.send("<h1>This is the home page</h1>")
-    // Express handles the end. 
 
+// Serve up static files here only using one line 
+
+app.use(express.static('public'))
+
+
+
+app.all('/', (req,res) =>{
+    // Express handles the basic headers (status code, mime-type) ! 
+    // Read in Node.html 
+    console.log(path.join(__dirname + '/node.html'))
+    res.sendFile(path.join(__dirname + '/node.html'))
+    // res.send("<h1>This is the home page</h1>")
+    // Express handles the end. 
+});
+
+app.all('*',(req,res) =>{
+    res.send("<h1>Sorry this page does not exist</h1>")
 })
 
 const PORT = 3000
