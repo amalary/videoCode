@@ -14,8 +14,8 @@ app.use(helment())
 // 3. urlencoded
 
 app.post('/ajax', (req,res)=>{
-    console.log(req)
-    res.send('Test')
+    console.log(req.body)
+    res.json(['Test',1,2,3,4])
 });
 
 let PORT = 3000;

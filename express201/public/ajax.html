@@ -2,17 +2,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
+
     const ourRequest = $.ajax({
         method:"POST",
-        url: "http://http://localhost:3000/ajax",
+        url: "http://localhost:3000/ajax",
         dataType:"json",
         data:{
             name:'Rob'
-        }
-    })
-    ourRequest.then((response)=>{
-        console.log(response)
+        },
     })
 
-    $.ajax()
+    ourRequest.then((response,statusCode,xmlhtpo)=>{
+        console.log(response)
+        console.log(xmlhtpo)
+
+    })
 </script>
