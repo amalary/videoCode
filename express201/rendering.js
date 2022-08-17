@@ -37,8 +37,10 @@ app.set('views',path.join(__dirname,'views'))
 // HTML, JS, CSS
 
 app.get('/',(req,res,next)=>{
-    // res.send('Sanity Check!')
-    res.render("index")
+    // The data in the second arg is going to be appended to res.locals
+    res.render("index",{
+        msg:'Success!'
+    })
 })
 let PORT =3000
 
