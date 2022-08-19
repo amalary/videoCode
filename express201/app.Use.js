@@ -48,3 +48,16 @@ let PORT = 3500;
 app.listen(PORT,()=>{
     console.log(`Listening on port ${PORT}`)
 })
+
+
+
+// function subscribe(fan_id,user_id)
+
+// subscribe('456_britanty', '123_anwar')
+
+// function showUnsubscriber(user_id,){
+
+    
+// }
+
+// showUnsubscriber()
